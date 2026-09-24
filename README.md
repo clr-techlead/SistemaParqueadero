@@ -1,78 +1,80 @@
-# 🅿️ Sistema de Control de Parqueadero
+🌐 English | [Versión en español](README.es.md)
+
+# 🅿️ Parking Lot Management System
 
 ![Tests](https://github.com/clr-techlead/SistemaParqueadero/actions/workflows/tests.yml/badge.svg)
 ![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)
 
-**Autor:** Camilo Andrés León Rubriche
-**Institución:** Universidad Nacional Abierta y a Distancia — UNAD
-**Curso:** Programación
+**Author:** Camilo Andrés León Rubriche
+**Institution:** Universidad Nacional Abierta y a Distancia — UNAD
+**Course:** Programming
 
-> Sistema de gestión de parqueadero con interfaz gráfica, construido en Python con Programación Orientada a Objetos.
+> Parking lot management system with a graphical interface, built in Python with Object-Oriented Programming.
 
-## Descripción
+## Overview
 
-Sistema de gestión de parqueadero desarrollado en Python con Programación Orientada a Objetos. Registra el ingreso y salida de vehículos (carros y motos), calcula el tiempo de estancia y el valor a pagar según tarifa, y mantiene un histórico persistente en archivos JSON. Cuenta con interfaz gráfica construida en Tkinter, con pestañas para operaciones, vehículos activos, búsqueda/filtros, estadísticas e histórico de reportes.
+A parking lot management system developed in Python with Object-Oriented Programming. It logs vehicle check-in/check-out (cars and motorcycles), calculates the time parked and the fee owed, and keeps a persistent history in JSON files. It includes a Tkinter GUI with tabs for operations, active vehicles, search/filters, statistics, and report history.
 
-## Capturas de pantalla
+## Screenshots
 
-| Registrar ingreso / salida | Vehículos activos |
+| Check-in / check-out | Active vehicles |
 |---|---|
-| ![Registrar ingreso y salida](docs/screenshots/01_registrar_ingreso.png) | ![Tabla de vehículos activos](docs/screenshots/02_vehiculos_activos.png) |
+| ![Check-in and check-out](docs/screenshots/01_registrar_ingreso.png) | ![Active vehicles table](docs/screenshots/02_vehiculos_activos.png) |
 
-| Panel de estadísticas |
+| Statistics panel |
 |---|
-| ![Métricas del parqueadero](docs/screenshots/03_estadisticas.png) |
+| ![Parking lot metrics](docs/screenshots/03_estadisticas.png) |
 
-## Ejecución
+## Running it
 
 ```bash
 python parqueadero.py
 ```
 
-Requisitos: Python 3.10+ (usa únicamente la librería estándar — `tkinter`, `json`, `datetime`, `os`).
+Requirements: Python 3.10+ (uses only the standard library — `tkinter`, `json`, `datetime`, `os`).
 
-## Pruebas
+## Tests
 
 ```bash
 pip install -r requirements.txt
 pytest tests/ -v
 ```
 
-14 pruebas unitarias cubren la lógica de negocio (cálculo de tiempo y tarifa, encapsulamiento, búsqueda/filtrado y estadísticas) de las clases `Vehiculo` y `Parqueadero`. Se ejecutan automáticamente en cada push vía GitHub Actions (ver badge arriba).
+14 unit tests cover the business logic (time and fee calculation, encapsulation, search/filtering, and statistics) of the `Vehiculo` and `Parqueadero` classes. They run automatically on every push via GitHub Actions (see badge above).
 
-## Características
+## Features
 
-- Encapsulamiento de atributos privados en la clase `Vehiculo`
-- Persistencia de datos activos e históricos en JSON (`vehiculos.json`, `historico.json`)
-- Cálculo automático de tiempo de estancia y tarifa (carro/moto)
-- Búsqueda por placa y filtrado por tipo de vehículo
-- Panel de estadísticas (activos, históricos, ingresos totales y promedio)
-- Generación de reportes del día
-- Interfaz gráfica con tema claro/oscuro alternable
+- Encapsulated private attributes in the `Vehiculo` class
+- Persistence of active and historical data in JSON (`vehiculos.json`, `historico.json`)
+- Automatic calculation of parking time and fee (car/motorcycle)
+- Search by plate and filtering by vehicle type
+- Statistics panel (active, historical, total and average revenue)
+- Daily report generation
+- GUI with a switchable light/dark theme
 
-## Arquitectura
+## Architecture
 
 ```
 SistemaParqueadero/
 │
-├── parqueadero.py            # Aplicación completa: modelo, lógica y UI (Tkinter)
+├── parqueadero.py            # Full application: model, logic, and UI (Tkinter)
 ├── tests/
-│   └── test_parqueadero.py    # Pruebas unitarias (pytest)
+│   └── test_parqueadero.py    # Unit tests (pytest)
 ├── .github/workflows/
-│   └── tests.yml               # CI: corre las pruebas en cada push
+│   └── tests.yml               # CI: runs the tests on every push
 ├── requirements.txt
 ├── LICENSE
-├── vehiculos.json              # Persistencia de vehículos activos (se genera en ejecución)
-└── historico.json              # Histórico de ingresos/salidas (se genera en ejecución)
+├── vehiculos.json              # Active vehicles persistence (generated at runtime)
+└── historico.json              # Check-in/check-out history (generated at runtime)
 ```
 
-## Problema conocido
+## Known Issue
 
-- El botón **"Tema Oscuro"** muestra el mensaje de confirmación "Tema oscuro activado", pero los widgets `ttk` (encabezados de tabla, pestañas) no cambian de color — solo se ve el efecto en algunos elementos. Es una limitación típica de mezclar `ttk` con estilos personalizados en Tkinter; vale la pena revisarlo si se quiere un tema oscuro completo y consistente.
+- The **"Tema Oscuro" (Dark Theme)** button shows the confirmation message "Tema oscuro activado" ("Dark theme enabled"), but the `ttk` widgets (table headers, tabs) don't actually change color — the effect is only visible on some elements. This is a typical limitation of mixing `ttk` with custom styling in Tkinter; worth revisiting for a fully consistent dark theme.
 
-## Tecnologías
+## Technologies
 
 - Python 3
-- tkinter / ttk — interfaz gráfica
-- json — persistencia de datos
-- datetime — cálculo de tiempos de estancia
+- tkinter / ttk — GUI
+- json — data persistence
+- datetime — parking time calculation
