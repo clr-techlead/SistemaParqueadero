@@ -1,0 +1,5 @@
+# Sistema de Control de Parqueadero
+# La aplicación en sí solo usa la librería estándar de Python
+# (tkinter, json, datetime, os). Estas dependencias son solo para
+# desarrollo y pruebas.
+pytest>=8.0.0
